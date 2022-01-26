@@ -11,6 +11,16 @@
 |
 */
 
+Route::get('/times', 'TimesController@index');
+Route::get('/end', 'TimesController@endding');
+Route::get('/tasks', 'TimesController@tasks');
 Route::get('/', function () {
-    return view('welcome');
+    return view('times/index');
 });
+// Route::get('/end', function () {
+//     return view('times/end');
+// });
+// Route::get('/tasks', function () {
+//     return view('tasks/index');
+// });
+

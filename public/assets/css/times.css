@@ -1,0 +1,58 @@
+.container {
+    margin-top: 100px;
+}
+
+#timer {
+    color: red;
+    text-align: center;
+    font-size: 120px;
+    font-family: sans-serif;
+}
+
+.btn {
+   text-align: center;
+   padding-top: 20px;
+   margin-top: 30px;
+}
+
+#start {
+    background-color: gray;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+#stop {
+    background-color: gray;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+#end {
+    background-color: gray;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.disable {
+    pointer-events: none;
+}
+
+a {
+   text-align: center;
+   padding-bottom: 20px;
+   /*width: 120px;*/
+   width: 20%;
+}
+
+#stop {
+    margin: 0 30px;
+}
+
+.tasks {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.inactive {
+    opacity: 0.6;
+}

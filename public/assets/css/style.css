@@ -1,0 +1,29 @@
+h1 {
+    color: blue;
+    text-align: center;
+    font-size: 45px;
+}
+
+.profile {
+    text-align: center;
+    font-size: 24px;
+}
+
+.profile a{
+    /*float: left;*/
+    display: block;
+}
+/*h3 {*/
+/*    float: right;*/
+/*}*/
+
+.content {
+    margin-top: 50px;
+}
+
+.content a{
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 15px;
+}
