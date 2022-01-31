@@ -13,7 +13,9 @@
 
 Route::get('/times', 'TimesController@index');
 Route::get('/end', 'TimesController@endding');
-Route::get('/tasks', 'TimesController@tasks');
+Route::get('/tasks', 'TodosController@index');
+Route::post('/tasks', 'TodosController@store');
+Route::delete('/tasks/{todo}', 'TodosController@destroy');
 Route::get('/', function () {
     return view('times/index');
 });

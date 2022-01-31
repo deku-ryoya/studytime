@@ -12,12 +12,17 @@
     </head>
     <body>
         <div class='container'>
-            <div id="timer">00:00</div>
-            <div class="btn">
-                <a id="start" class='btn'>start</a>
-                <a id="stop" class='btn'>stop</a>
-                <a href="/end" id="end" class='btn disable' onclick="return confirm('本当に終了しますか？')">終了</a>
-            </div>
+            <div id="timer">0時間00分</div>
+            <div id="tasks_timer">00:00:00</div>
+            <form action="/" method="POST" name="time_form">
+                @csrf
+                <div class="btn">
+                    <a id="start" class='btn'>start</a>
+                    <input type="hidden" name="" id="input_time">
+                    <a id="stop" class='btn' onclick="document.time_form.submit();">stop</a>
+                    <a href="/end" id="end" class='btn disable' onclick="return confirm('本当に終了しますか？')">終了</a>
+                </div>
+            </form>
             <div class='tasks'>
                 <a href='/tasks'>本日のタスクを確認する</a>
             </div>

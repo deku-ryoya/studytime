@@ -1,0 +1,60 @@
+.main {
+    background-color: gray;
+    text-align: center;
+    /*width: 800px;*/
+    min-height: 500px;
+    border-radius: 16px;
+}
+
+.container h2{
+    margin: 0;
+}
+
+.form_group label {
+    font-size: 16px;
+}
+
+.btn {
+    padding: 0 20px;
+}
+
+.add_task {
+    background-color: skyblue;
+}
+
+.task_form {
+    max-width: 1000px;
+}
+
+.task_table {
+    margin: 30px auto;
+}
+
+.delete_task {
+    background-color: orange;
+    margin-left: 100px;
+}
+
+tbody {
+    text-align: center;
+}
+
+.task_content {
+    font-size: 20px;
+    margin-top: 30px;
+    /*text-align: center;*/
+}
+
+
+.body__error {
+    color: red;
+}
+
+#form_delete input {
+    display: none;
+}
+
+.footer {
+    text-align-last: center;
+    margin-top: 180px;
+}

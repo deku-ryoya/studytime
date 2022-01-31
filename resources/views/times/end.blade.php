@@ -12,5 +12,6 @@
     </head>
     <body>
         <h1>userさん<br>おつかれさまでした!</h1>
+        <a href="/times">もう少し勉強を行う！</a>
     </body>
 </html>

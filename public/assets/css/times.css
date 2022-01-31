@@ -3,6 +3,10 @@
 }
 
 #timer {
+    text-align: right;
+}
+
+#tasks_timer {
     color: red;
     text-align: center;
     font-size: 120px;
