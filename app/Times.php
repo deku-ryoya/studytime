@@ -11,7 +11,9 @@ class Times extends Model
         'Tasks_time',
         'Today_time',
         'Total_time',
-        'Week_time',
         'User_id',
+        'start_at',
+        'stop_at',
+        'todo_id',
     ];
 }

@@ -12,5 +12,12 @@ class Todo extends Model
     protected $fillable = [
         'id',
         'body',
+        'task_target_time',
+        'tasks_time',
     ];
+    
+    public function times()
+    {
+        return $this->hasMany('App\Time');
+    }
 }

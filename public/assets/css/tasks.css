@@ -1,9 +1,15 @@
 .main {
-    background-color: gray;
+    background-color: #dddddd;
     text-align: center;
-    /*width: 800px;*/
-    min-height: 500px;
     border-radius: 16px;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.container h1{
+    font-size: 50px;
+    border-bottom-color: black;
+    border-bottom: dotted;
 }
 
 .container h2{
@@ -20,6 +26,7 @@
 
 .add_task {
     background-color: skyblue;
+    margin-top: 8px;
 }
 
 .task_form {
@@ -28,12 +35,13 @@
 
 .task_table {
     margin: 30px auto;
+    width: 800px;
 }
 
 .delete_task {
     background-color: orange;
-    margin-left: 100px;
 }
+
 
 tbody {
     text-align: center;

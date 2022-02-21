@@ -10,19 +10,21 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/times', 'TimesController@index');
-Route::get('/end', 'TimesController@endding');
-Route::get('/tasks', 'TodosController@index');
-Route::post('/tasks', 'TodosController@store');
-Route::delete('/tasks/{todo}', 'TodosController@destroy');
 Route::get('/', function () {
     return view('times/index');
 });
-// Route::get('/end', function () {
-//     return view('times/end');
-// });
-// Route::get('/tasks', function () {
-//     return view('tasks/index');
-// });
-
+Route::get('/end', 'TimesController@endding');
+Route::get('/tasks', 'TodosController@index');
+Route::get('/tasks', 'TodosController@elapsedTime');
+Route::post('/tasks', 'TodosController@store');
+Route::delete('/tasks/{todo}', 'TodosController@destroy');
+Route::get('/times/{todo}', 'TodosController@task_name');
+// Route::get('/times/{todo}/study', 'TodosController@task_name2');
+// Route::get('/times', 'TodosController@task_name');
+Route::get('/times/{todo}/study', 'TimesController@dynamic');
+Route::get('/times/{todo}', 'TimesController@staticc');
+Route::post('/times/{todo}/study', 'TimesController@start');
+Route::post('/times/{todo}', 'TimesController@stop');
+// Route::post('/times/{todo}', 'TimesController@staticc');
+// Route::post('/times{todo}', 'TimesController@store');
+// Route::post('/times/{todo}/', 'TimesController@start');

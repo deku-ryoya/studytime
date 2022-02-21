@@ -16,14 +16,14 @@
                 <!--<div id="timer">0時間00分</div>-->
                 <h2>{{ $todo->body }}</h2>
                     <div id="timer">00:00:00</div>
-                    <form action="/times/{{ $todo->id }}/study" method="POST" name="time[todo_id]">
+                     <form action="/times/{{ $todo->id }}" method="POST" name="time[todo_id]">
                         @csrf
                         <div class="btn_form">
-                            <button id="start" class='btn' name="time[start_at]" type="submit">start</button>
+                            <!--<a id="start" class='btn' name="time[start_at]">start</a>-->
                             <!--<input type="hidden" name="time[start_at]" id="input_time" type="submit">-->
-                            <!--<button id="stop" class="btn" name="time[stop_at]">stop</button>-->
+                            <button id="stop" class="btn" type="submit" name="time[stop_at]">stop</button>
                         <!--<a id="stop" class='btn' onclick="document.time_form.submit();">stop</a>-->
-                            <a href="/end" id="end" class='btn' onclick="return confirm('本当に終了しますか？')">終了</a>
+                            <!--<a href="/end" id="end" class='btn disable' onclick="return confirm('本当に終了しますか？')">終了</a>-->
                         </div>
                     </form>
                 <div class='tasks'>
@@ -31,6 +31,6 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript" src="../assets/js/time.js"></script>
+        <script type="text/javascript" src="../../assets/js/dynamic.js"></script>
     </body>
 </html>

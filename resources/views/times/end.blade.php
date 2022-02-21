@@ -11,7 +11,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>userさん<br>おつかれさまでした!</h1>
-        <a href="/times">もう少し勉強を行う！</a>
+        <div class="main">
+            <h1>userさん<br>おつかれさまでした!</h1>
+            <a href="/tasks">もう少し勉強を行う！</a>
+        </div>
     </body>
 </html>

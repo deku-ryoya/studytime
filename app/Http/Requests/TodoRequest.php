@@ -25,6 +25,7 @@ class TodoRequest extends FormRequest
     {
         return [
             'todo.body' => 'required',
+            'todo.task_target_time' => 'required',
         ];
     }
 }

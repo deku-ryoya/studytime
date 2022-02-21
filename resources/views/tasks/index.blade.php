@@ -20,9 +20,13 @@
                 @csrf
                 <div class="form_group">
                     <!--<label>本日のタスクを追加してください！</label>-->
-                    <input type="text" name="todo[body]" class="task_form" placeholder="タスク">
+                    <input type="text" name="todo[body]" class="task_form" placeholder="タスク" value="{{ old('todo.body') }}">
                     @if ($errors->has('todo.body'))
                         <p class="body__error">タスクを記入してください</p>
+                    @endif
+                    <input type="text" name="todo[task_target_time]" class="task_time_form" placeholder="目標時間(0時間00分)" value="{{ old('todo.task_target_time') }}">
+                    @if ($errors->has('todo.task_target_time'))
+                        <p class="body__error">目標時間を記入してください</p>
                     @endif
                 </div>
                 <button type="submit" class="btn add_task">追加</button>
@@ -31,13 +35,23 @@
             <table class="task_table">
                 <thead>
                     <tr>
-                        <!--<th>本日のタスク</th>-->
+                        <th></th>
+                        <th>目標時間</th>
+                        <th>達成時間</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($todos as $todo)
                         <tr>
                             <td class="task_content">{{ $todo->body }}</td>
+                            <td class="task_time">{{ $todo->task_target_time }}</td>
+                            <td>{{ $todo->tasks_time }}分</td>
+                            <td>
+                                <a href="/times/{{ $todo->id }}">勉強を始める</a>
+                            </td>
+                            <td>
+                                <button>達成</button>
+                            </td>
                             <td>
                                 <form action="/tasks/{{ $todo->id }}" id="form_delete" method="POST" style="display:inline">
                                     @csrf
@@ -53,7 +67,7 @@
             
                 
             <div class="footer">
-                <a href="/times">勉強に戻る</a>
+                <!--<a href="/times">勉強に戻る</a>-->
                 <a href="/">ホームに戻る</a>
             </div>
         </div>
