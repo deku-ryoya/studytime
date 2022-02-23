@@ -43,14 +43,27 @@
                 <tbody>
                     @foreach ($todos as $todo)
                         <tr>
-                            <td class="task_content">{{ $todo->body }}</td>
+                            <td class="task_content" id="target{{ $todo->id }}">{{ $todo->body }}</td>
                             <td class="task_time">{{ $todo->task_target_time }}</td>
-                            <td>{{ $todo->tasks_time }}分</td>
+                            @foreach ((array)$todo->tasks_time as $elapsedtime)
+                                @if (($elapsedtime) >= 3600)
+                                    <td>{{ floor($elapsedtime / 3600) }}時間</td>
+                                @elseif (($elapsedtime) >= 60)
+                                    <td>{{ floor($elapsedtime / 60) }}分</td>
+                                @elseif (($elapsedtime) >= 0)
+                                    <td>{{ $elapsedtime }}秒</td>
+                                @elseif (!isset($elapsedtime))
+                                    <td>0分(null)</td>
+                                @else
+                                    <td>0分(null)</td>
+                                @endif
+                            @endforeach
+                    
                             <td>
                                 <a href="/times/{{ $todo->id }}">勉強を始める</a>
                             </td>
                             <td>
-                                <button>達成</button>
+                                <button id="clear_btn" onclick="clearBtn('target{{ $todo->id }}');">達成</button>
                             </td>
                             <td>
                                 <form action="/tasks/{{ $todo->id }}" id="form_delete" method="POST" style="display:inline">

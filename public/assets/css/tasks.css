@@ -66,3 +66,9 @@ tbody {
     text-align-last: center;
     margin-top: 180px;
 }
+
+.del {
+    background-image: linear-gradient(transparent 0.5em, #fe3464 0, #fe3464 calc(0.5em + 1px), transparent 0, transparent calc(0.5em + 3px), #fe3464 0, #fe3464 calc(0.5em + 4px), transparent 0);
+    color: #888;
+    text-decoration: none;
+}

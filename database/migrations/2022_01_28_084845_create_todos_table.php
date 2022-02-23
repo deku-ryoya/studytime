@@ -16,6 +16,8 @@ class CreateTodosTable extends Migration
         Schema::create('todos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('body');
+            $table->text('task_target_time');
+            $table->bigInteger('tasks_time')->default(0);
             $table->timestamps();
         });
     }
