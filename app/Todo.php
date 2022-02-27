@@ -14,6 +14,7 @@ class Todo extends Model
         'body',
         'task_target_time',
         'tasks_time',
+        'achievement_task',
     ];
     
     public function times()

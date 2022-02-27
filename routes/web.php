@@ -14,8 +14,10 @@ Route::get('/', function () {
     return view('times/index');
 });
 Route::get('/end', 'TimesController@endding');
+Route::get('/end', 'TimesController@total');
 Route::get('/tasks', 'TodosController@index');
 Route::get('/tasks', 'TodosController@elapsedTime');
+Route::post('/tasks', 'TodosController@achieve');
 Route::post('/tasks', 'TodosController@store');
 Route::delete('/tasks/{todo}', 'TodosController@destroy');
 Route::get('/times/{todo}', 'TodosController@task_name');

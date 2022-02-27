@@ -54,8 +54,10 @@ class TimesController extends Controller
         $stop = Carbon::now('Asia/Tokyo');
         // dd($stop);
         $time = Time::where('todo_id', $todo->id)->first();
-        
         $task = $time->start_at;
+        
+        $a = $time->tasks_time;
+        // dd($a);
         
         $task_times = explode(":",$task);
         
@@ -83,6 +85,18 @@ class TimesController extends Controller
         // $input = ['Tasks_time' => 'elapsedTime'];
         $time->fill($start_at)->save();
         return redirect('/times/{todo}/study');
+    }
+    
+    public function total(Time $todo)
+    {
+        $time = Time::all();
+        // dd($time[0]);
+        $total = 0;
+        for($i = 0; $i < count($time); $i++) {
+            $total = $total + $time[$i]->tasks_time;
+        }
+        // dd($total);
+        return view('times/end')->with(['total'=> $total]);
     }
     
     

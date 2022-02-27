@@ -37,7 +37,7 @@
                     <tr>
                         <th></th>
                         <th>目標時間</th>
-                        <th>達成時間</th>
+                        <th>経過時間</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,7 +63,10 @@
                                 <a href="/times/{{ $todo->id }}">勉強を始める</a>
                             </td>
                             <td>
-                                <button id="clear_btn" onclick="clearBtn('target{{ $todo->id }}');">達成</button>
+                                <form action="/task" id="achievement_form" method="POST" style="display:inline">
+                                    @csrf
+                                    <button id="clear_btn" onclick="clearBtn('target{{ $todo->id }}');" type="submit" name="todo[achievement_task]">達成</button>
+                                </form>
                             </td>
                             <td>
                                 <form action="/tasks/{{ $todo->id }}" id="form_delete" method="POST" style="display:inline">

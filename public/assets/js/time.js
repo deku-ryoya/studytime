@@ -22,16 +22,14 @@
     
     let total_time = 0;
     
-    //ミリ秒単位から秒、分、時単位にするための関数
-    function updateTimeText() {
-        //h=時, m=分、s=秒
-        let h = Math.floor(elapsedTime / 3600000);
-        let m = Math.floor(elapsedTime / 60000);
-        let s = Math.floor(elapsedTime % 60000 / 1000);
+    let defaultTime = defaultValue * 1000;
+    
+    
+    function defaultTimeText() {
         
-        // let th = Math.floor(tasks_elapsedTime / 3600000);
-        // let tm = Math.floor(tasks_elapsedTime / 60000);
-        // let ts = Math.floor(tasks_elapsedTime % 60000 / 1000);
+        let h = Math.floor(defaultTime / 3600000);
+        let m = Math.floor(defaultTime / 60000);
+        let s = Math.floor(defaultTime % 60000 / 1000);
         
         //HTML上で表示の桁数を2桁に固定する 例（00:00:00）
         //文字列の末尾の2桁を表示する
@@ -39,9 +37,25 @@
         m = ('0' + m).slice(-2); 
         s = ('0' + s).slice(-2);
         
-        // th = ('0' + th).slice(-2); 
-        // tm = ('0' + tm).slice(-2); 
-        // ts = ('0' + ts).slice(-2);
+        //HTMLのid timer部分に表示させる
+        // timer.textContent = h + '時間' + m + '分';
+        timer.textContent = h + ':' + m + ':' + s;
+    }
+    defaultTimeText();
+    
+    
+    //ミリ秒単位から秒、分、時単位にするための関数
+    function updateTimeText() {
+        //h=時, m=分、s=秒
+        let h = Math.floor(elapsedTime / 3600000);
+        let m = Math.floor(elapsedTime / 60000);
+        let s = Math.floor(elapsedTime % 60000 / 1000);
+        
+        //HTML上で表示の桁数を2桁に固定する 例（00:00:00）
+        //文字列の末尾の2桁を表示する
+        h = ('0' + h).slice(-2); 
+        m = ('0' + m).slice(-2); 
+        s = ('0' + s).slice(-2);
         
         //HTMLのid timer部分に表示させる
         // timer.textContent = h + '時間' + m + '分';

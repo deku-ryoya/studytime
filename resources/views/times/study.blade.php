@@ -31,6 +31,9 @@
                 </div>
             </div>
         </div>
+        <script>
+            var defaultValue = '{{ $todo->tasks_time }}';
+        </script>
         <script type="text/javascript" src="../assets/js/time.js"></script>
     </body>
 </html>

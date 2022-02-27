@@ -31,6 +31,15 @@
                 </div>
             </div>
         </div>
+        <script>
+            var restartTime = '{{ $todo->tasks_time }}';
+            
+            // console.log(restartTime);
+            // window.mainjs = {};
+            // window.mainjs.restartTime = restartTime;
+            // window.mainjs.func1 = func1;
+            // console.log(restartTime)
+        </script>
         <script type="text/javascript" src="../../assets/js/dynamic.js"></script>
     </body>
 </html>

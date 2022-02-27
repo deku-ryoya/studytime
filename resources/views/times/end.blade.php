@@ -13,6 +13,16 @@
     <body>
         <div class="main">
             <h1>userさん<br>おつかれさまでした!</h1>
+            <p>総勉強時間</p>
+            @if (($total) >= 3600)
+                <p>{{ floor($total / 3600) }}時間</p>
+            @elseif (($total) >= 60)
+                <p>{{ floor($total / 60) }}分</p>
+            @elseif (($total) >= 0)
+                <p>{{ $total }}秒</p>
+            @endif
+            
+            
             <a href="/tasks">もう少し勉強を行う！</a>
         </div>
     </body>
