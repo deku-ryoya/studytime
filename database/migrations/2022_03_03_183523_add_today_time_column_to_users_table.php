@@ -14,7 +14,7 @@ class AddTodayTimeColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('today_time')->default(0)->change();
+            $table->bigInteger('today_time')->default(0);
         });
     }
 
