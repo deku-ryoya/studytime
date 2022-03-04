@@ -40,20 +40,7 @@ class UserController extends Controller
     {
         
         $users = User::orderBy('total_time', 'desc')->take(5)->get();
-        // dd($users);
-        // // $users = User::withCount('total_time')->orderBy('total_time', 'desc')->paginate;
-    
-        // $users = $user->sort('total_time');
-        // $users = User::all();
-        // $a = $users[1]->total_time;
-        // dd($a);
-        // foreach($users as $user){
-        //     $a = $user->name;
-        // }
-        // dd($a);
-        
-        
-        // dd($user1);
+
         
         //自分の順位を出す
         $user1 = User::orderBy('total_time', 'desc')->get();

@@ -14,7 +14,7 @@ class AddTotalTaskColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->bigInteger('todal_task')->nullable();
+            $table->bigInteger('total_task')->nullable();
         });
     }
 

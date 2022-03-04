@@ -41,7 +41,6 @@ class TodosController extends Controller
         for($i = 0; $i < count($todos); $i++) {
             $total = $total + $todos[$i]->tasks_time;
         }
-        dd($total);
         
         return view('times/end')->with(['todo' => $todo, 'total' => $total]);
     }
