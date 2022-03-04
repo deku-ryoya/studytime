@@ -3,7 +3,7 @@
     text-align: center;
     border-radius: 16px;
     margin: 0 auto;
-    width: 1000px;
+    width: 80%;
     height: 550px;
 }
 
@@ -11,23 +11,26 @@ h1 {
     color: blue;
     text-align: center;
     font-size: 45px;
+    padding-top: 50px;
 }
 
 .profile {
     text-align: center;
     font-size: 24px;
+    margin-top:80px;
 }
 
 .profile a{
     /*float: left;*/
     display: block;
+    color: black;
 }
 /*h3 {*/
 /*    float: right;*/
 /*}*/
 
 .content {
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 .content a{
@@ -35,4 +38,23 @@ h1 {
     text-align: center;
     font-size: 20px;
     margin-top: 15px;
+}
+
+@media screen and (max-width: 768px), print {
+    .main {
+    margin: 0 auto;
+    width: 80%;
+    height: 400px;
+    }
+    
+    h1 {
+        font-size: 30px;
+    }
+    
+    .content a {
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        margin-top: 15px;
+    }
 }

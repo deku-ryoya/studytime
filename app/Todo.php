@@ -15,10 +15,15 @@ class Todo extends Model
         'task_target_time',
         'tasks_time',
         'achievement_task',
+        'user_id',
     ];
     
     public function times()
     {
         return $this->hasMany('App\Time');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }

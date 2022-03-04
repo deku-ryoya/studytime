@@ -9,13 +9,14 @@ function deleteTodo(e) {
     }
 }
 
-function clearBtn(clear_btn){
-    var clearbtn = document.getElementById(clear_btn);
-     clearbtn.classList.add('del');
-}
+// function clearBtn(e){
+//     const button = document.getElementById("form_delete{{ $todo->id }}");
+//     button.disabled = true;
+//     console.log("owari");
+// }
 
 
-// function clearBtn(clear_btn){
+// // function clearBtn(clear_btn){
 //     var clearbtn = document.getElementById(clear_btn);
 //     if(clearbtn.{
 //      clearbtn.classList.add('del');

@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -37,3 +41,4 @@
         <script type="text/javascript" src="../assets/js/time.js"></script>
     </body>
 </html>
+@endsection

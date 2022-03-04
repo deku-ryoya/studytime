@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -16,7 +17,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 
+        'email', 
+        'password',
+        'total_time',
+        'total_task',
+        'today_time',
     ];
 
     /**
@@ -36,4 +42,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    
+
+    public function todos()
+    {
+        return $this->hasMany('App\Todo');
+    }
+    
+    public function getUserPage(int $limit_count = 5)
+    {
+        return $this::with('user')->orderBy('total_time', 'DESC')->paginate($limit_count);
+    }
 }

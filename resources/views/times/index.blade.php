@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -16,14 +20,14 @@
                 <h1>Study Time</h1>
             </div>
             <div class="profile">
-                <a href="">ユーザー名</a>
-                <h3>Lv.4</h3>
+                <a href="/profile">{{Auth::user()->name}}</a>
             </div>
             <div class="content">
                 <!--<a href="/times">勉強を始める</a>-->
                 <a href="/tasks">本日のタスクを決める</a>
-                <a href="">ランキングを確認する</a>
+                <a href="/ranking">ランキングを確認する</a>
             </div>
         </div>
     </body>
 </html>
+@endsection

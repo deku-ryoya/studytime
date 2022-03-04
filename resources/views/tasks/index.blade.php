@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -35,15 +39,19 @@
             <table class="task_table">
                 <thead>
                     <tr>
-                        <th></th>
-                        <th>目標時間</th>
-                        <th>経過時間</th>
+                        <th class="title">タスク名</th>
+                        <th class="title">目標時間</th>
+                        <th class="title">経過時間</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($todos as $todo)
                         <tr>
-                            <td class="task_content" id="target{{ $todo->id }}">{{ $todo->body }}</td>
+                            @if (($todo->achievement_task) == 1)
+                                <td class="task_content del" id="target{{ $todo->id }}">{{ $todo->body }}</td>
+                            @else
+                                <td class="task_content" id="target{{ $todo->id }}">{{ $todo->body }}</td>
+                            @endif
                             <td class="task_time">{{ $todo->task_target_time }}</td>
                             @foreach ((array)$todo->tasks_time as $elapsedtime)
                                 @if (($elapsedtime) >= 3600)
@@ -63,16 +71,24 @@
                                 <a href="/times/{{ $todo->id }}">勉強を始める</a>
                             </td>
                             <td>
-                                <form action="/task" id="achievement_form" method="POST" style="display:inline">
+                                <form action="/task/{{ $todo->id }}" id="achievement_form" method="POST" style="display:inline">
                                     @csrf
-                                    <button id="clear_btn" onclick="clearBtn('target{{ $todo->id }}');" type="submit" name="todo[achievement_task]">達成</button>
+                                    @if (( $todo->achievement_task ) == 0 )
+                                        <button id="clear_btn" onclick="return clearBtn(this);" type="submit" name="todo_achievement_task">達成</button>
+                                    @else
+                                        <p class="achieved">達成済み</p>
+                                    @endif
                                 </form>
                             </td>
                             <td>
-                                <form action="/tasks/{{ $todo->id }}" id="form_delete" method="POST" style="display:inline">
+                                <form action="/tasks/{{ $todo->id }}" id="form_delete{{ $todo->id }}" method="POST" style="display:inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return deleteTodo(this);" class="btn delete_task">削除</button>
+                                    @if (( $todo->achievement_task ) == 0 )
+                                        <button type="submit" onclick="return deleteTodo(this);" class="btn delete_task">削除</button>
+                                    @else
+                                        <button class="btn clear_task">削除</button>
+                                    @endif
                                 </form>
                             </td>
                         </tr>
@@ -90,3 +106,4 @@
         <script type="text/javascript" src="assets/js/tasks.js"></script>
     </body>
 </html>
+@endsection

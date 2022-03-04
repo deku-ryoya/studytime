@@ -3,7 +3,7 @@
     text-align: center;
     border-radius: 16px;
     margin: 0 auto;
-    width: 1000px;
+    width: 80%;
 }
 
 .container h1{
@@ -35,11 +35,16 @@
 
 .task_table {
     margin: 30px auto;
-    width: 800px;
+    /*width: 800px;*/
+    width: 70%;
 }
 
 .delete_task {
     background-color: orange;
+}
+
+.clear_task {
+    background-color: #A89978;
 }
 
 
@@ -51,6 +56,10 @@ tbody {
     font-size: 20px;
     margin-top: 30px;
     /*text-align: center;*/
+}
+
+.achieved {
+    color: red;
 }
 
 
@@ -71,4 +80,30 @@ tbody {
     background-image: linear-gradient(transparent 0.5em, #fe3464 0, #fe3464 calc(0.5em + 1px), transparent 0, transparent calc(0.5em + 3px), #fe3464 0, #fe3464 calc(0.5em + 4px), transparent 0);
     color: #888;
     text-decoration: none;
+}
+
+@media screen and (max-width: 768px), print {
+    .container h1{
+    font-size: 30px;
+    border-bottom-color: black;
+    border-bottom: dotted;
+    }
+    
+    .container h2{
+    font-size: 20px;
+    }
+    
+    .task_table {
+    margin: 30px auto;
+    /*width: 800px;*/
+    width: 100%;
+    }
+    
+    .title {
+        font-size: 10px;
+    }
+    
+    .btn {
+    padding: 0 8px;
+    }
 }

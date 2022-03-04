@@ -2,7 +2,6 @@
     background-color: #dddddd;
     text-align: center;
     border-radius: 16px;
-    /*width: 1000px;*/
     width: 80%;
     height: 550px;
     margin: 0 auto;
@@ -13,14 +12,9 @@ h1 {
     text-align: center;
 }
 
-.time_table {
-    margin: 30px auto;
-    width: 30%;
-}
-
-.task_table {
-    margin: 30px auto;
-    width: 30%;
+.ranking_table {
+    margin: 40px auto;
+    width: 50%;
 }
 
 .title {
@@ -30,11 +24,16 @@ h1 {
 
 .value {
     font-size: 26px;
+    margin-top: 30px;
+}
+.myScore {
+    color: red;
+    margin-top: 100px;
 }
 
 .footer {
     text-align-last: center;
-    margin-top: 70px;
+    margin-top: 130px;
 }
 
 @media screen and (max-width: 768px), print {
@@ -44,37 +43,23 @@ h1 {
     height: 400px;
     }
     
+    .ranking_table {
+        width: 80%;
+    }
+    
     h1 {
     color: red;
     text-align: center;
-    font-size: 25px;
-    }
-    
-    .time_table {
-        margin: 30px auto;
-        width: 50%;
-    }
-    
-    .today_task {
-        font-size: 20px;
-    }
-    
-    .task_table {
-        margin: 30px auto;
-        width: 50%;
-    }
-    
-    .title {
-        font-size: 14px;
-        color: blue;
+    font-size: 30px;
     }
     
     .value {
-        font-size: 18px;
+    font-size: 20px;
+    margin-top: 30px;
     }
     
     .footer {
-        text-align-last: center;
-        margin: 0;
-    }
+    text-align-last: center;
+    margin-top: 0;
+    }  
 }
