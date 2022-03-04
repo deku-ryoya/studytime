@@ -14,7 +14,7 @@ class ChangeTotalTaskColumnOfUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->renameColumn('todal_time','total_time');
+            $table->renameColumn('todal_task','total_task');
         });
     }
 
