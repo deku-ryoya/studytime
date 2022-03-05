@@ -40,6 +40,7 @@ class UserController extends Controller
     {
         
         $users = User::orderBy('total_time', 'desc')->take(5)->get();
+        // dd($users);
 
         
         //自分の順位を出す

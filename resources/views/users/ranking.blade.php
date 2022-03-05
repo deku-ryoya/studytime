@@ -36,6 +36,8 @@
                                 <td class="value">{{ floor($user->total_time / 60) }}分</td>
                             @elseif (($user->total_time) >= 0)
                                 <td class="value">{{ $user->total_time }}秒</td>
+                            @else
+                                <td class="value">0秒</td>
                             @endif
                         </tr>
                     @endforeach

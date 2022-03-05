@@ -29,8 +29,10 @@
                             <td class="value">{{ floor($user->total_time / 3600) }}時間</td>
                         @elseif (($user->total_time) >= 60)
                             <td class="value">{{ floor($user->total_time / 60) }}分</td>
-                        @elseif (($user->total_time) >= 0)
+                        @elseif (($user->total_time) > 0)
                             <td class="value">{{ $user->total_time }}秒</td>
+                        @else 
+                            <td class="value">0秒</td>
                         @endif
                     </tr>
                     <tr>
@@ -39,7 +41,11 @@
                     </tr>
                     <tr>
                         <td class="title">総達成タスク数</td>
-                        <td class="value">{{ $user->total_task }}個</td>
+                        @if ($user->total_task > 0)
+                            <td class="value">{{ $user->total_task }}個</td>
+                        @else
+                            <td class="value">0個</td>
+                        @endif
                     </tr>
                 </tbody>
                 
