@@ -16,7 +16,7 @@
     </head>
     <body>
         <div class="main">
-            <h1>ランキング</h1>
+            <h1>総合ランキング</h1>
             <table class="ranking_table">
                 <thead>
                     <tr>
@@ -64,6 +64,7 @@
                 
             </table>
             <div class="footer">
+                <a href="/today-ranking">本日のランキングを見る</a><br>
                 <a href="/">ホームに戻る</a>
             </div>
         </div>

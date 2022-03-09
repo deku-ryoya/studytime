@@ -25,7 +25,7 @@
             <div class="content">
                 <!--<a href="/times">勉強を始める</a>-->
                 <a href="/tasks">本日のタスクを決める</a>
-                <a href="/ranking">ランキングを確認する</a>
+                <a href="/total-ranking">ランキングを確認する</a>
             </div>
         </div>
     </body>

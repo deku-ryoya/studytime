@@ -39,17 +39,6 @@ class TweetCommand extends Command
      */
     public function handle()
     {
-        $users = User::orderBy('total_time', 'desc')->take(5)->get();
-        $text = [];
-        for ($i = 0; $i < 5; $i++) {
-            $text[$i] =  $i+1 . '位　' . $users[$i]->name;
-        }
-        
-        echo "ランキング" . PHP_EOL;
-        for ($i = 0; $i < 5; $i++) {
-            echo $text[$i] . PHP_EOL;
-        }
-        
         $twitter = new TwitterOAuth(
             config('services.twitter.consumer_key'),
             config('services.twitter.consumer_secret'),
@@ -57,10 +46,45 @@ class TweetCommand extends Command
             config('services.twitter.access_secret'),
         );
         
+        $total_users = User::orderBy('total_time', 'desc')->take(5)->get();
+        $total_text = [];
+        for ($i = 0; $i < 5; $i++) {
+            $total_text[$i] =  $i+1 . '位　' . $total_users[$i]->name;
+        }
+        
+        $today_users = User::orderBy('today_time', 'desc')->take(5)->get();
+        $today_text = [];
+        for ($i = 0; $i < 5; $i++) {
+            $today_text[$i] =  $i+1 . '位　' . $today_users[$i]->name;
+        }
+        
+        echo "ランキング" . PHP_EOL;
+        for ($i = 0; $i < 5; $i++) {
+            echo $total_text[$i] . PHP_EOL;
+        }
+        echo "ランキング" . PHP_EOL;
+        for ($i = 0; $i < 5; $i++) {
+            echo $today_text[$i] . PHP_EOL;
+        }
+
+
+        
         $twitter->post("statuses/update", [
             "status" => 
                 'ランキング結果' . PHP_EOL .
-                'こんにちは'
+                '総合ランキング' . PHP_EOL .
+                $total_text[0] . PHP_EOL .
+                $total_text[1] . PHP_EOL .
+                $total_text[2] . PHP_EOL .
+                $total_text[3] . PHP_EOL .
+                $total_text[4] . PHP_EOL .
+                '---------------' . PHP_EOL .
+                '本日のランキング' . PHP_EOL .
+                $today_text[0] . PHP_EOL .
+                $today_text[1] . PHP_EOL .
+                $today_text[2] . PHP_EOL .
+                $today_text[3] . PHP_EOL .
+                $today_text[4] . PHP_EOL 
         ]);
 
     }

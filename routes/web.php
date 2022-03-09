@@ -23,7 +23,8 @@ Route::group(['middleware' => ['auth']], function(){
     Route::delete('/tasks/{todo}', 'TodosController@destroy');
     Route::get('/times/{todo}', 'TodosController@task_name');
     Route::get('/profile', 'UserController@profile');
-    Route::get('/ranking', 'UserController@ranking');
+    Route::get('/total-ranking', 'UserController@total_ranking');
+    Route::get('/today-ranking', 'UserController@today_ranking');
     // Route::get('/times/{todo}/study', 'TodosController@task_name2');
     // Route::get('/times', 'TodosController@task_name');
     Route::get('/times/{todo}/study', 'TimesController@dynamic');
