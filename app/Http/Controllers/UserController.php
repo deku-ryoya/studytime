@@ -36,11 +36,11 @@ class UserController extends Controller
         return view('users/profile')->with(['user' => $user, 'achievement_count' => $achievement_count, 'result' => $result]);
     }
     
+    
     public function total_ranking(User $user)
     {
         
         $users = User::orderBy('total_time', 'desc')->take(5)->get();
-        // dd($users);
         //自分の順位を出す
         $user1 = User::orderBy('total_time', 'desc')->get();
         $user = User::where('id', Auth::id())->first();
@@ -60,6 +60,7 @@ class UserController extends Controller
         
         return view('users/total_ranking')->with(['users' => $users, 'result' => $result]);
     }
+    
     
     public function today_ranking()
     {

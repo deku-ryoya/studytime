@@ -14,7 +14,6 @@
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/', 'TimesController@home');
     Route::get('/end', 'TodosController@endding');
-    // Route::get('/end', 'TimesController@endding');
     Route::get('/end', 'TimesController@total');
     Route::get('/tasks', 'TodosController@index');
     Route::get('/tasks', 'TodosController@elapsedTime');
@@ -25,16 +24,10 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/profile', 'UserController@profile');
     Route::get('/total-ranking', 'UserController@total_ranking');
     Route::get('/today-ranking', 'UserController@today_ranking');
-    // Route::get('/times/{todo}/study', 'TodosController@task_name2');
-    // Route::get('/times', 'TodosController@task_name');
     Route::get('/times/{todo}/study', 'TimesController@dynamic');
-    Route::get('/times/{todo}', 'TimesController@staticc');
+    Route::get('/times/{todo}', 'TimesController@statics');
     Route::post('/times/{todo}/study', 'TimesController@start');
     Route::post('/times/{todo}', 'TimesController@stop');
-    // Route::post('/times/{todo}', 'TimesController@staticc');
-    // Route::post('/times{todo}', 'TimesController@store');
-    // Route::post('/times/{todo}/', 'TimesController@start');
-    
     
     Route::get('/home', 'HomeController@index')->name('home');
 });

@@ -99,7 +99,6 @@
             
                 
             <div class="footer">
-                <!--<a href="/times">勉強に戻る</a>-->
                 <a href="/">ホームに戻る</a>
             </div>
         </div>

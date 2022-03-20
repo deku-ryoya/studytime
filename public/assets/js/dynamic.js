@@ -2,49 +2,20 @@
     'use strict';
     
     const timer = document.getElementById('timer');
-    // const tasks_timer = document.getElementById('tasks_timer');
     const start = document.getElementById('start');
     const stop = document.getElementById('stop');
     const end = document.getElementById('end');
-    const disable = document.getElementsByClassName('disable');
     const hiddenField = document.getElementById('input_time');
     
     //クリック時の時間を保持するための変数定義
     let startTime = Date.now();
     //経過時刻を更新するための変数。 初めはだから0で初期化
     let elapsedTime = 0;
-    // let tasks_elapsedTime = 0;
     //タイマーを止めるためのclearTimeoutの引数に渡すためのタイマーのidが必要
     let timerId;
     //タイマーを再開させたときに0になるのを避けるための変数
     let timeToadd = 0;
-    // let tasks_timeToadd = 0;
-    
-    let total_time = 0;
-    
-    
     let defaultTime = restartTime * 1000;
-    
-    
-    // //最初の表示時間を出す関数
-    //  function defaultTimeText() {
-        
-    //     let h = Math.floor(defaultTime / 3600000);
-    //     let m = Math.floor(defaultTime / 60000);
-    //     let s = Math.floor(defaultTime % 60000 / 1000);
-        
-    //     //HTML上で表示の桁数を2桁に固定する 例（00:00:00）
-    //     //文字列の末尾の2桁を表示する
-    //     h = ('0' + h).slice(-2); 
-    //     m = ('0' + m).slice(-2); 
-    //     s = ('0' + s).slice(-2);
-        
-    //     //HTMLのid timer部分に表示させる
-    //     // timer.textContent = h + '時間' + m + '分';
-    //     timer.textContent = h + ':' + m + ':' + s;
-    // }
-    // // 最初の表示時間
-    // defaultTimeText();
     
     
     //ミリ秒単位から秒、分、時単位にするための関数
@@ -53,7 +24,6 @@
         let h = Math.floor(elapsedTime / 3600000);
         let m = Math.floor(elapsedTime / 60000);
         let s = Math.floor(elapsedTime % 60000 / 1000);
-
         
         //HTML上で表示の桁数を2桁に固定する 例（00:00:00）
         //文字列の末尾の2桁を表示する
@@ -62,7 +32,6 @@
         s = ('0' + s).slice(-2);
 
         //HTMLのid timer部分に表示させる
-        // timer.textContent = h + '時間' + m + '分';
         timer.textContent = h + ':' + m + ':' + s;
     }
     
@@ -75,74 +44,37 @@
             
              //経過時刻はDate.now()からstartを押した時の時刻(startTime)を引く
             elapsedTime = Date.now() + defaultTime - startTime + timeToadd;
-            // tasks_elapsedTime = Date.now() - startTime + tasks_timeToadd;
             updateTimeText();
 
             countUp();
         },100);
     }
-    // console.log($restartTime);
     
     
-    // 状態:初期
-   function setButtonStateInitial() {
-       start.classList.remove('inactive'); // 活性
-       stop.classList.add('inactive'); // 非活性
-       end.classList.add('inactive'); // 非活性
-    //   end.classList.add('disable'); // 非活性
-   }
-   
-   
     // 状態:タイマー動作中
-   function setButtonStateRunning() {
+  function setButtonStateRunning() {
     //   start.classList.add('inactive'); // 非活性
-       stop.classList.remove('inactive'); // 活性
+      stop.classList.remove('inactive'); // 活性
     //   end.classList.add('inactive'); // 非活性
     //   end.classList.add('disable'); // 非活性
     //   stop.classList.add('disable'); // 非活性
-   }
+  }
    
    
     // 状態:タイマーストップ中
-   function setButtonStateStopped() {
-       start.classList.remove('inactive'); // 活性
-       stop.classList.add('inactive'); // 非活性
-       end.classList.remove('inactive'); // 活性
-       end.classList.remove('disable'); //活性
-       stop.classList.remove('disable'); //活性
-   }
+  function setButtonStateStopped() {
+      start.classList.remove('inactive'); // 活性
+      stop.classList.add('inactive'); // 非活性
+      end.classList.remove('inactive'); // 活性
+      end.classList.remove('disable'); //活性
+      stop.classList.remove('disable'); //活性
+  }
    
-   console.log(startTime);
-   
-//   console.log(mainjs.restartTime);
     
-    
-    // ボタンを'初期'状態とする
+    // ボタンを'動作'状態とする
     setButtonStateRunning();
     
     countUp();
-    
-    
-    
-    // //startボタンにクリック時のイベントを追加(タイマースタートイベント)
-    // start.addEventListener('click', function() {
-    //     if (start.classList.contains('inactive')) {
-    //         return;
-    //     }
-            
-    //     //ボタンを'動作'状態とする
-    //     setButtonStateRunning();
-        
-    //     //在時刻を示すDate.nowを代入
-    //     startTime = Date.now();
-        
-    //     //再帰的に使えるように関数を作る
-    //     countUp();
-            
-    // });
-    
-    
-    
     
     //stopボタンにクリック時のイベントを追加(タイマーストップイベント)
     stop.addEventListener('click',function(){
@@ -160,46 +92,7 @@
         //それを回避するためには過去のスタート時間からストップ時間までの経過時間を足してあげなければならない。
         //elapsedTime = Date.now - startTime + timeToadd (timeToadd = ストップを押した時刻(Date.now)から直近のスタート時刻(startTime)を引く)
       timeToadd += Date.now() - startTime;
-    //   tasks_timeToadd += Date.now() - startTime;
       hiddenField.value = elapsedTime;
     });
-    
-    
-    //  //終了ボタンにクリック時のイベントを追加(タイマーリセットイベント)
-    // end.addEventListener('click',function(){
-    //     if (end.classList.contains('inactive')) {
-    //         return;
-    //     } 
-    //     if (confirm('本当に終了しますか?？')) {
-            
-            
-            
-    //         let minutes = Math.floor(elapsedTime / 60000);
-    //         let second = Math.floor(elapsedTime % 60000 / 1000);
-            
-            
-    //         total_time = total_time + elapsedTime;
-            
-    //         let total_minutes = Math.floor(total_time / 60000);
-    //         let total_second = Math.floor(total_time % 60000 / 1000);
-    //         // console.log(total_time);
-            
-    //         alert(`今回は${minutes}分${second}秒勉強しました`);
-    //         alert(`総勉強時間${total_minutes}分${total_second}秒です！`);
-            
-    //         //経過時刻を更新するための変数elapsedTimeを0にしてあげつつ、updateTimetTextで0になったタイムを表示。
-    //         // tasks_elapsedTime = 0;
-    //         elapsedTime = 0;
-        
-    //         //リセット時に0に初期化したいのでリセットを押した際に0を代入してあげる
-    //         timeToadd = 0;
-            
-    //         setButtonStateInitial();
-        
-    //         //updateTimetTextで0になったタイムを表示
-    //         updateTimeText();
-    //     }
-    
-    // });
     
 // })

@@ -13,8 +13,6 @@ class TodosController extends Controller
 {
     public function index(Todo $todo)
     {
-        // $todo = Todo::where('user_id', Auth::id());
-        // dd($todo);
         $todo = Todo::all();
         
         return view('tasks/index')->with('todos',$todo);
@@ -23,12 +21,7 @@ class TodosController extends Controller
     public function elapsedTime(Todo $todos)
     {
         $todos = Todo::where('user_id', Auth::id())->get();
-        // dd($todos);
-        // $todos = Todo::all();
-        // dd($todos);
         return view('tasks/index')->with(['todos' => $todos]);
-        // dd($elapsed_time);
-        
     }
     
     public function endding(Todo $todo)
@@ -49,14 +42,9 @@ class TodosController extends Controller
     
     public function task_name(Todo $todo)
     {
-        // $todo = Todo::all();
         return view('/times/study')->with(['todo' => $todo]);
     }  
-    public function task_name2(Todo $todo)
-    {
-        // $todo = Todo::all();
-        return view('/times/dynamic')->with(['todo' => $todo]);
-    }
+    
     
     public function store(Todo $todo, TodoRequest $request)
     {

@@ -16,37 +16,21 @@ class TimesController extends Controller
     {
         return view('times/index');
     }
-    // public function index()
-    // {
-    //     return view('times/study');
-    // }
-    
+
     public function dynamic(Todo $todo)
     {
-        // $start_at = Carbon::now();
-        // $time->fill($start_at)->save();
         return view('/times/dynamic')->with(['todo' => $todo]);
     }
     
-    public function staticc(Todo $todo)
+    public function statics(Todo $todo)
     {
         return view('/times/study')->with(['todo' => $todo]);
     }
-    
-    public function endding(Todo $todo)
-    {
-        $todos = Todo::all();
-        dd($todos);
-        
-        
-        return view('times/end')->with(['todos' => $todos]);
-    }
+
     
     public function start(Time $time, Todo $todo)
     {
         $start = Carbon::now('Asia/Tokyo');
-        // dd($start);
-        // $start += ['todo_id' => $todo->id];
         
         $doesn_exists = Time::where('todo_id', $todo->id)->doesntExist();
         
@@ -59,10 +43,10 @@ class TimesController extends Controller
         return redirect('/times/' . $todo->id . '/study')->with(['todo' => $todo]);
     }
     
+    
     public function stop(Time $time, Todo $todo, User $user)
     {
         $stop = Carbon::now('Asia/Tokyo');
-        // dd($stop);
         $time = Time::where('todo_id', $todo->id)->first();
         $task = $time->start_at;
         
@@ -75,7 +59,6 @@ class TimesController extends Controller
         $task_time = $start->diffInSeconds($stop);
         $elapsed_time = $time->tasks_time += $task_time;
         
-        
         // todosテーブルに挿入
         $todo = Todo::where('id', $todo->id)->first();
         $todo->fill(['tasks_time' => $elapsed_time])->save();
@@ -87,8 +70,7 @@ class TimesController extends Controller
 
         //usersテーブルに挿入
         $user->fill(['total_time' => $total_time, 'today_time' => $today_time])->save();
-        
-        // $time->fill(['tasks_time' => $task_time])->save();
+
         return redirect('/times/' . $todo->id)->with(['todo' => $todo]);
     }
     
@@ -97,29 +79,13 @@ class TimesController extends Controller
     {
         $input = $request['time'];
         $start_at = time();
-        // $input = ['Tasks_time' => 'elapsedTime'];
         $time->fill($start_at)->save();
         return redirect('/times/{todo}/study');
     }
-    
-    
-    //全ユーザーの総勉強時間
-    // public function total(Time $time)
-    // {
-    //     $time = Time::all();
-    //     $todos = Todo::all();
-    //     // dd($todo);
-    //     $total = 0;
-    //     for($i = 0; $i < count($time); $i++) {
-    //         $total = $total + $time[$i]->tasks_time;
-    //     }
-    //     // dd($total);
-    //     return view('times/end')->with(['total'=> $total, 'todos' => $todos]);
-    // }
-    
+
+
     public function total(User $user)
     {
-        // // $time = Time::all();
         $todos = Todo::where('user_id', Auth::id())->get();
         $user = User::where('id', Auth::id())->first();
         
@@ -129,8 +95,6 @@ class TimesController extends Controller
             $total = $total + $todos[$i]->tasks_time;
         }
         
-        
-        // dd($total);
         return view('times/end')->with(['todos' => $todos, 'user' => $user, 'total' => $total]);
     }
     
