@@ -22,7 +22,7 @@
     function updateTimeText() {
         //h=時, m=分、s=秒
         let h = Math.floor(elapsedTime / 3600000);
-        let m = Math.floor(elapsedTime / 60000);
+        let m = Math.floor(elapsedTime % 3600000 / 60000);
         let s = Math.floor(elapsedTime % 60000 / 1000);
         
         //HTML上で表示の桁数を2桁に固定する 例（00:00:00）

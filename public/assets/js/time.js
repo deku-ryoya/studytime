@@ -9,7 +9,7 @@
     function defaultTimeText() {
         
         let h = Math.floor(defaultTime / 3600000);
-        let m = Math.floor(defaultTime / 60000);
+        let m = Math.floor(defaultTime % 3600000 / 60000);
         let s = Math.floor(defaultTime % 60000 / 1000);
         
         //HTML上で表示の桁数を2桁に固定する 例（00:00:00）
